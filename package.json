@@ -1,0 +1,16 @@
+{
+  "name": "jb-mail",
+  "description": "mail sender",
+  "version": "1.0.0",
+  "author": "Carlos Aguilar <hey@carlos-aguilar.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env index.js"
+  },
+  "dependencies": {
+    "csv-parse": "^5.6.0",
+    "nodemailer": "^6.10.0"
+  }
+}
