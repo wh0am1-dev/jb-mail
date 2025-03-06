@@ -3,7 +3,7 @@ import fsp from 'fs/promises'
 import { parse } from 'csv-parse'
 import nodemailer from 'nodemailer'
 
-const __dirname = new URL('.', import.meta.url).pathname
+const __dirname = process.cwd()
 
 console.log('host: %s', process.env.HOST)
 console.log('mail: %s', process.env.MAIL)
@@ -19,19 +19,17 @@ const transporter = nodemailer.createTransport({
   },
 })
 
-const readSubject = async () => {
-  const subject = await fsp.readFile(`${__dirname}/data/subject.txt`, 'utf-8')
-  return subject
-}
+const readSubject = async () =>
+  await fsp.readFile(`${__dirname}/data/subject.txt`, 'utf-8')
 
-const readTemplate = async () => {
-  const template = await fsp.readFile(`${__dirname}/data/template.html`, 'utf-8')
-  return template
-}
+const readTemplate = async () =>
+  await fsp.readFile(`${__dirname}/data/template.html`, 'utf-8')
 
 const readMails = async () => {
   const records = []
-  const parser = fs.createReadStream(`${__dirname}/data/mails.csv`).pipe(parse({ delimiter: ',', columns: true }))
+  const parser = fs
+    .createReadStream(`${__dirname}/data/mails.csv`)
+    .pipe(parse({ delimiter: ',', columns: true }))
 
   for await (const record of parser) {
     records.push(record)
