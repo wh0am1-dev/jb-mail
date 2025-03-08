@@ -32,7 +32,7 @@ import nodemailer from 'nodemailer'
   )
 
   console.log('host: %s', host)
-  console.log('mail: %s', user)
+  console.log('user: %s', user)
   console.log('mails: %s', JSON.stringify(contacts, null, 2))
   console.log('subject: %s', subject)
   console.log('template:\n%s', template)
@@ -46,7 +46,7 @@ import nodemailer from 'nodemailer'
     }
 
     const info = await transporter.sendMail({
-      from: process.env.MAIL,
+      from: user,
       to: contact.email,
       subject,
       html,
