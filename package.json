@@ -1,16 +1,21 @@
 {
   "name": "jb-mail",
-  "description": "mail sender",
+  "description": "email list sender for Javier Lekker",
   "version": "1.0.0",
   "author": "Carlos Aguilar <hey@carlos-aguilar.com>",
   "license": "MIT",
-  "main": "index.js",
+  "main": "main.js",
   "type": "module",
   "scripts": {
-    "start": "node --env-file=.env index.js"
+    "start": "node --env-file=.env main.js"
   },
   "dependencies": {
     "csv-parse": "^5.6.0",
     "nodemailer": "^6.10.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "eslint": "^9.22.0",
+    "globals": "^16.0.0"
   }
 }
